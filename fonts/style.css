@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Rock Star';
+    src: local('Rock Star Regular'), local('Rock-Star-Regular'),
+        url('RockStar-Regular.woff2') format('woff2'),
+        url('RockStar-Regular.woff') format('woff'),
+        url('RockStar-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
