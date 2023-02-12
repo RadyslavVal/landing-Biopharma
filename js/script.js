@@ -9,15 +9,24 @@ let next = 0;
 liveTextContent[next].style.opacity = '1';
 liveTextContent[next].style.top = '0px';
 setInterval(() => {
+    let modif = 1;
     liveTextContent[next].style.top = `-${positionTop}px`;
     next < liveTextCounter - 1 ? next += 1 : next = 0;
+    liveTextContent[next].clientWidth > liveBlock.clientWidth ? (next += 1, modif = 2) : modif = 1;
+
     liveTextContent[next].style.opacity = '1';
     liveTextContent[next].style.top = '0px';
+
     setTimeout(() => {
-        next !== 0 ? liveTextContent[next - 1].style.opacity = '0' : liveTextContent[liveTextCounter - 1].style.opacity = '0';
-        next !== 0 ? liveTextContent[next - 1].style.top = `${positionTop}px` : liveTextContent[liveTextCounter - 1].style.top = `${positionTop}px`;
+        next !== 0 ? (
+            liveTextContent[next - modif].style.opacity = '0',
+            liveTextContent[next - modif].style.top = `${positionTop}px`
+        ) : (
+            liveTextContent[liveTextCounter - 1].style.opacity = '0',
+            liveTextContent[liveTextCounter - 1].style.top = `${positionTop}px`
+        );
     }, 500)
-}, 1500);
+}, 2000);
 
 /*=============================================*/
 let webWidth = document.querySelector('.wrapper').offsetWidth;
